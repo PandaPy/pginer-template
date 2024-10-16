@@ -23,7 +23,7 @@ DATABASES:
     MaxOpenConns: 100
     AutoMigrate: true
   # smy:
-  #   NAME: mock1
+  #   NAME: mock
   #   USER: mock
   #   PASSWORD: mock
   #   HOST: mock
