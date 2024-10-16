@@ -2,23 +2,31 @@ package config
 
 // Config 包含所有应用的配置项
 type Config struct {
-	Listen        int                 `mapstructure:"LISTEN"`
-	MODE          string              `mapstructure:"MODE"`
-	ROUTER_PREFIX string              `mapstructure:"ROUTER_PREFIX"`
-	AllowedHosts  []string            `mapstructure:"ALLOWED_HOSTS"`
-	SecretKey     string              `mapstructure:"SECRET_KEY"`
-	Databases     map[string]DBConfig `mapstructure:"DATABASES"`
-	Redis         RedisConfig         `mapstructure:"REDIS"`
+	Server    ServerConfig        `mapstructure:"SERVER"`
+	Databases map[string]DBConfig `mapstructure:"DATABASES"`
+	Redis     RedisConfig         `mapstructure:"REDIS"`
+}
+
+// APPConfig 定义数据库配置
+type ServerConfig struct {
+	Listen       int      `mapstructure:"LISTEN"`
+	Mode         string   `mapstructure:"MODE"`
+	RouerPrefix  string   `mapstructure:"ROUTER_PREFIX"`
+	AllowedHosts []string `mapstructure:"ALLOWED_HOSTS"`
+	SecretKey    string   `mapstructure:"SECRET_KEY"`
 }
 
 // DBConfig 定义数据库配置
 type DBConfig struct {
-	Name     string `mapstructure:"NAME"`
-	User     string `mapstructure:"USER"`
-	Password string `mapstructure:"PASSWORD"`
-	Host     string `mapstructure:"HOST"`
-	Port     string `mapstructure:"PORT"`
-	Config   string `mapstructure:"CONFIG"`
+	Name         string `mapstructure:"NAME"`
+	User         string `mapstructure:"USER"`
+	Password     string `mapstructure:"PASSWORD"`
+	Host         string `mapstructure:"HOST"`
+	Port         string `mapstructure:"PORT"`
+	Config       string `mapstructure:"CONFIG"`
+	MaxIdleConns int    `mapstructure:"MaxIdleConns"`
+	MaxOpenConns int    `mapstructure:"MaxOpenConns"`
+	AutoMigrate  bool   `mapstructure:"AutoMigrate"`
 }
 
 func (m *DBConfig) Dsn() string {

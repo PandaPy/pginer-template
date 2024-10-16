@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 
+	"github.com/fatih/color"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 )
@@ -10,7 +11,9 @@ import (
 var AppConfig Config
 
 // LoadConfig loads the configuration for the entire application
-func InitConfig() {
+func Init() {
+	color.Green("初始化配置文件")
+
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath(".")
@@ -31,15 +34,18 @@ func InitConfig() {
 
 func validateConfig() {
 	requiredKeys := []string{
-		"LISTEN",
-		"MODE",
-		"ALLOWED_HOSTS",
-		"SECRET_KEY",
+		"SERVER.LISTEN",
+		"SERVER.MODE",
+		"SERVER.ALLOWED_HOSTS",
+		"SERVER.ROUTER_PREFIX",
+		"SERVER.SECRET_KEY",
+
 		"DATABASES.default.NAME",
 		"DATABASES.default.USER",
 		"DATABASES.default.PASSWORD",
 		"DATABASES.default.HOST",
 		"DATABASES.default.PORT",
+
 		"REDIS.HOST",
 		"REDIS.USER",
 		"REDIS.PASSWORD",

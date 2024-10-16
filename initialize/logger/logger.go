@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/fatih/color"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -11,7 +12,9 @@ import (
 var Logger *zap.Logger
 
 // InitLogger 初始化日志输出格式，控制台输出带颜色，固定间距
-func InitLogger() {
+func Init() {
+	color.Green("初始化日志库")
+
 	// 定义日志文件路径
 	logDir := "log"
 	logFile := filepath.Join(logDir, "output.log")
