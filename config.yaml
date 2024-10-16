@@ -1,0 +1,39 @@
+# Pginer settings for the project.
+# This configuration file, for version 1.0.1, contains the settings and configurations 
+# required to initialize and run the backend.
+
+# SERVER
+SERVER:
+  LISTEN: 8001
+  MODE: debug
+  ALLOWED_HOSTS: ['*']
+  ROUTER_PREFIX: /api
+  SECRET_KEY: pginer-insecure-m&3@6dz19mn+gq^+j-9yqbd8jr)*twrdtbp2evjs*h!#wy*$bj
+
+# Database
+DATABASES:
+  default:
+    HOST: mock
+    NAME: mock
+    USER: mock
+    PASSWORD: mock
+    PORT: 3306
+    CONFIG: parseTime=True&loc=Local
+    MaxIdleConns: 10
+    MaxOpenConns: 100
+    AutoMigrate: true
+  # smy:
+  #   NAME: mock
+  #   USER: mock
+  #   PASSWORD: mock
+  #   HOST: mock
+  #   PORT: mock
+  #   CONFIG: charset=utf8mb4&parseTime=True&loc=Local
+
+# Redis
+REDIS:
+  HOST: mock
+  USER: mock
+  PASSWORD: mock
+  
+  
