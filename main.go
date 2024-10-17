@@ -1,15 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
-	"github.com/PandaPy/pginer/template/initialize"
+	"github.com/PandaPy/pginer/template/initialize/cmd"
 )
 
 func main() {
-	if len(os.Args) > 1 {
-		initialize.Cmd()
-		return
+	if err := cmd.Execute(); err != nil {
+		fmt.Println("命令执行失败:", err)
+		os.Exit(1)
 	}
-	initialize.RunWindowsServer()
 }

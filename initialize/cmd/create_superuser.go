@@ -6,6 +6,7 @@ import (
 
 	"github.com/PandaPy/pginer/template/initialize/db"
 	"github.com/PandaPy/pginer/template/models"
+
 	"github.com/spf13/cobra"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -14,7 +15,7 @@ var username, password string
 
 var createSuperUserCmd = &cobra.Command{
 	Use:   "create-superuser",
-	Short: "创建超级管理员账户",
+	Short: "创建超级管理员账户 (--username=<用户名> --password=<密码>)",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		var count int64

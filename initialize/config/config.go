@@ -11,12 +11,12 @@ import (
 var AppConfig Config
 
 // LoadConfig loads the configuration for the entire application
-func Init() {
+func Init(env string) {
 	color.Green("初始化配置文件")
 
-	viper.SetConfigName("config")
+	viper.SetConfigName("config." + env)
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath(".")
+	viper.AddConfigPath("./config")
 
 	// 读取配置文件
 	if err := viper.ReadInConfig(); err != nil {
